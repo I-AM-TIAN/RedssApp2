@@ -1,11 +1,18 @@
 .nav{
     border-bottom: 0.1px solid rgba(0, 0, 0, 0.082);
     display: flex;
+    justify-content: center;
+    height: 90px;
     gap: 250px;
+    padding: 15px;
+    position: relative;
 
 }
 .logo{
     height: 90px;
+    position: absolute;
+    left: 10px;
+
 }
 .nav li{
     display: flex;
