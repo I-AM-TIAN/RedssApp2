@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 import { Info } from "../screens/Info";
 import { Link, Routes } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "../styles/mapcomponent.css";
 
 const MapboxComponent = () => {
@@ -100,66 +100,74 @@ const MapboxComponent = () => {
         });
 
         // Añadir popups a los marcadores individuales
-        map.on("click", "unclustered-point", function (e) {
-          var uid = e.features[0].properties.uid;
-          var coordinates = e.features[0].geometry.coordinates.slice();
-          var empresaNombre = e.features[0].properties.title;
-          var empresaDireccion = e.features[0].properties.direction;
-          // Crear el popup
-          const popup = new mapboxgl.Popup()
-            .setLngLat(coordinates)
-            .setHTML(
-              "<h3>" + empresaNombre + "</h3>" +
-              "<span><strong>" + empresaDireccion + "</strong></span> <br>" +
-              '<button id="verMasButton">Ver más</button>'
-            )
-            .addTo(map);
+        map.on(
+          "click",
+          "unclustered-point",
+          function (e) {
+            var uid = e.features[0].properties.uid;
+            var coordinates = e.features[0].geometry.coordinates.slice();
+            var empresaNombre = e.features[0].properties.title;
+            var empresaDireccion = e.features[0].properties.direction;
+            // Crear el popup
+            const popup = new mapboxgl.Popup()
+              .setLngLat(coordinates)
+              .setHTML(
+                "<h3>" +
+                  empresaNombre +
+                  "</h3>" +
+                  "<span><strong>" +
+                  empresaDireccion +
+                  "</strong></span> <br>" +
+                  '<button id="verMasButton">Ver más</button>'
+              )
+              .addTo(map);
 
-          // Agregar un evento de clic al botón "Ver más" dentro del popup
-          const verMasButton = document.getElementById("verMasButton");
-          verMasButton.addEventListener("click", function () {
-            // Redirigir al usuario a la página de detalles usando React Router
-            navigate('/info', { state: { uid } });
-          });
-      }, [navigate]);
+            // Agregar un evento de clic al botón "Ver más" dentro del popup
+            const verMasButton = document.getElementById("verMasButton");
+            verMasButton.addEventListener("click", function () {
+              // Redirigir al usuario a la página de detalles usando React Router
+              navigate("/info", { state: { uid } });
+            });
+          },
+          [navigate]
+        );
 
-    // Cambiar el cursor al pasar sobre un cluster o marcador individual
-    map.on("mouseenter", "clusters", function () {
-      map.getCanvas().style.cursor = "pointer";
-    });
-    map.on("mouseleave", "clusters", function () {
-      map.getCanvas().style.cursor = "";
-    });
-    map.on("mouseenter", "unclustered-point", function () {
-      map.getCanvas().style.cursor = "pointer";
-    });
-    map.on("mouseleave", "unclustered-point", function () {
-      map.getCanvas().style.cursor = "";
-    });
-  });
-  // Añadir un evento de clic al layer de clusters
-  map.on("click", "clusters", function (e) {
-    var features = map.queryRenderedFeatures(e.point, {
-      layers: ["clusters"],
-    });
-
-    var clusterId = features[0].properties.cluster_id;
-
-    // Obtener las coordenadas del cluster
-    map
-      .getSource("empresas")
-      .getClusterExpansionZoom(clusterId, function (err, zoom) {
-        if (err) return;
-
-        // Hacer zoom al cluster
-        map.flyTo({
-          center: features[0].geometry.coordinates,
-          zoom: zoom + 1, // Ajusta el nivel de zoom según tu preferencia
+        // Cambiar el cursor al pasar sobre un cluster o marcador individual
+        map.on("mouseenter", "clusters", function () {
+          map.getCanvas().style.cursor = "pointer";
+        });
+        map.on("mouseleave", "clusters", function () {
+          map.getCanvas().style.cursor = "";
+        });
+        map.on("mouseenter", "unclustered-point", function () {
+          map.getCanvas().style.cursor = "pointer";
+        });
+        map.on("mouseleave", "unclustered-point", function () {
+          map.getCanvas().style.cursor = "";
         });
       });
-  });
-}, []);
+    // Añadir un evento de clic al layer de clusters
+    map.on("click", "clusters", function (e) {
+      var features = map.queryRenderedFeatures(e.point, {
+        layers: ["clusters"],
+      });
 
+      var clusterId = features[0].properties.cluster_id;
+
+      // Obtener las coordenadas del cluster
+      map
+        .getSource("empresas")
+        .getClusterExpansionZoom(clusterId, function (err, zoom) {
+          if (err) return;
+
+          // Hacer zoom al cluster
+          map.flyTo({
+            center: features[0].geometry.coordinates,
+            zoom: zoom + 1, // Ajusta el nivel de zoom según tu preferencia
+          });
+        });
+    });
+  }, []);
 
   return (
     <div className="contentmap">
