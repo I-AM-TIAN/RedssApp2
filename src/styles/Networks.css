@@ -1,0 +1,31 @@
+.container-net{
+    z-index: 2;
+    position: absolute;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.763);
+    height: 340px;
+    width: 80px;
+    border-radius: 17px 0px 0px 17px;
+    -webkit-border-radius: 17px 0px 0px 17px;
+    -moz-border-radius: 17px 0px 0px 17px;
+}
+
+.container-net li{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    list-style: none;
+}
+.container-net li ul{
+    height: 40px;
+    display: flex;
+}
+.container-net li a{
+    display: flex;
+    justify-content: center;
+}
+.container-net li img{
+    right: 25%;
+}

@@ -1,0 +1,52 @@
+.content{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+}
+.transparent{
+    backdrop-filter: blur(4px);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+video{
+   width: 100%;
+}
+.content img{
+    position: absolute;
+    margin-bottom: 50px;
+    z-index: 2;
+}
+
+/* Estilos para el scroll vertical */
+::-webkit-scrollbar {
+    width: 10px; /* Ancho del scroll */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(66, 48, 231, 0.863); /* Color del scroll (transparente) */
+    border-radius: 5px; /* Bordes redondeados */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(185, 179, 255, 0.614); /* Color de fondo del track (transparente) */
+  }
+  
+  /* Estilos para el scroll horizontal (opcional) */
+  ::-webkit-scrollbar-horizontal {
+    height: 10px; /* Alto del scroll */
+  }
+  
+  ::-webkit-scrollbar-thumb:horizontal {
+    background: rgba(0, 0, 0, 0.3); /* Color del scroll horizontal (transparente) */
+    border-radius: 5px; /* Bordes redondeados */
+  }
+  
+  ::-webkit-scrollbar-track:horizontal {
+    background: rgba(255, 255, 255, 0.5); /* Color de fondo del track horizontal (transparente) */
+  }
+  
