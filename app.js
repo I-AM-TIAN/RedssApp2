@@ -1,7 +1,12 @@
 import express from 'express';
 import mysql from 'mysql';
+import bodyParser from 'body-parser';
+
+// Resto de tu código...
+
 const app = express();
 import cors from 'cors';
+app.use(bodyParser.json());
 
 
 
@@ -11,8 +16,10 @@ const connection = mysql.createConnection({
     user: 'root',
     password: '',
     database: 'redssapp',
-    port: 3308
+    port: 3306
 });
+
+
 
 app.use(cors());
 app.use(express.static('./'));
@@ -51,6 +58,23 @@ app.get('/empresas/:id', (req, res) => {
         }
     });
 });
+
+app.post('/solicitudes', (req, res) => {
+    const nuevaSolicitud = req.body;
+  
+
+    const sql = 'INSERT INTO solicitudes SET ?'; 
+  
+    connection.query(sql, nuevaSolicitud, (error, results) => {
+      if (error) {
+        console.error('Error al guardar la solicitud: ' + error.message);
+        res.status(500).json({ error: 'Error al guardar la solicitud' });
+      } else {
+        console.log('Solicitud guardada con éxito. ID:', results.insertId);
+        res.json({ message: 'Solicitud guardada con éxito', id: results.insertId });
+      }
+    });
+  });
 // Puerto en el que el servidor escuchará las solicitudes
 const PORT = 3000;
 app.listen(PORT, () => {
