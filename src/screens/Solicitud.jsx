@@ -65,7 +65,7 @@
 
     return (
         <>
-        <body>
+        <body className='bodySolicitud'>
         <div className="formulario">
             <form onSubmit={handleSubmit}>
             <label htmlFor="nombre">Nombre</label>
