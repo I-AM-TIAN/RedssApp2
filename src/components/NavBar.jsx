@@ -1,24 +1,36 @@
 import "../styles/NavBar.css";
+import { Link } from "react-router-dom";
 export const NavBar = () => {
   return (
     <div className="nav">
-      <img
-        className="logo"
-        src="../../public/images/Logo_RedssApp.png"
-        alt=""
-      />
+      <Link to="/Home">
+        <img
+          className="logo"
+          src="../../public/images/Logo_RedssApp.png"
+          alt=""
+        />
+      </Link>
+
       <li>
         <ul>
-          <a href="">logo</a>
+          <a href="">
+            <img src="../../public/images/icons/home-page.png" alt="" />
+          </a>
         </ul>
         <ul>
-          <a href="">logo</a>
+          <a href="">
+            <img
+              src="../../public/images/icons/information-button.png"
+              alt=""
+            />
+          </a>
         </ul>
         <ul>
-          <a href="">logo</a>
-        </ul>
-        <ul>
-          <a href="">logo</a>
+          <a href="">
+            <Link to="/Solicitud">
+              <img src="../../public/images/icons/form.png" alt="" />
+            </Link>
+          </a>
         </ul>
       </li>
     </div>

@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Router>
-        <nav>
+        {/* <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -20,7 +20,7 @@ function App() {
               <Link to="/Solicitud">Solicitud</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/info" element={<Info />} />
