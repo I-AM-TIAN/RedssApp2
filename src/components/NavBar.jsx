@@ -14,7 +14,9 @@ export const NavBar = () => {
       <li>
         <ul>
           <a href="">
-            <img src="../../public/images/icons/home-page.png" alt="" />
+            <Link to="/">
+              <img src="../../public/images/icons/home-page.png" alt="" />
+            </Link>
           </a>
         </ul>
         <ul>

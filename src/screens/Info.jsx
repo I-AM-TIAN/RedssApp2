@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { NavBar } from "../components/NavBar";
-import { Map } from "../components/Map";
+// import { Map } from "../components/Map";
 export const Info = () => {
   const location = useLocation();
   const { uid } = location.state;
@@ -34,7 +34,6 @@ export const Info = () => {
               <p>Dirección: {empresa.direccion}</p>
               {/* Otras propiedades de la empresa */}
             </div>
-            <Map lng={empresa.longitud} lat={empresa.latitud} />
           </div>
         ) : (
           <p>Cargando la información de la empresa...</p>
