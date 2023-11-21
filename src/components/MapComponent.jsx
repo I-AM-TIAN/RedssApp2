@@ -180,6 +180,9 @@ const MapboxComponent = () => {
       })
     );
 
+    map.addControl(new mapboxgl.NavigationControl());
+    map.scrollZoom.disable();
+
   }, []);
 
   return (
