@@ -4,6 +4,8 @@ import { Info } from "../screens/Info";
 import { Link, Routes } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../styles/mapcomponent.css";
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 
 const MapboxComponent = () => {
   const navigate = useNavigate();
@@ -167,6 +169,12 @@ const MapboxComponent = () => {
           });
         });
     });
+    map.addControl(
+      new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl,
+      })
+    );
 
     map.addControl(
       new mapboxgl.GeolocateControl({
@@ -182,7 +190,6 @@ const MapboxComponent = () => {
 
     map.addControl(new mapboxgl.NavigationControl());
     map.scrollZoom.disable();
-
   }, []);
 
   return (
