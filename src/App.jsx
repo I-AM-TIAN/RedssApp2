@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./screens/Home";
 import { Info } from "./screens/Info";
-import { Solicitud } from "./screens/Solicitud";
+import { Request } from "./screens/Request";
 import { Link } from "react-router-dom";
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/info" element={<Info />} />
-          <Route path="/Solicitud" element={<Solicitud />} />
+          <Route path="/Solicitud" element={<Request />} />
         </Routes>
       </Router>
     </>

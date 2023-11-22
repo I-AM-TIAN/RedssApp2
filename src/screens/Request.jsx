@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "../styles/solicitud.css";
+import "../styles/request.css";
 import { NavBar } from "../components/NavBar";
-export const Solicitud = () => {
+export const Request = () => {
   const [showInput, setShowInput] = useState(false);
-  const [nuevaSolicitud, setNuevaSolicitud] = useState({
+  const [newRequest, setnewRequest] = useState({
     nombre: "",
     descripcion: "",
     tipo_organizacion: "",
@@ -20,23 +20,23 @@ export const Solicitud = () => {
   const handleTipoOrgChange = (event) => {
     const selectedValue = event.target.value;
     setShowInput(selectedValue === ""); // Mostrar el input si el valor es ''
-    setNuevaSolicitud({
-      ...nuevaSolicitud,
+    setnewRequest({
+      ...newRequest,
       tipo_organizacion: selectedValue,
     });
   };
 
   const handleInputChange = (event) => {
     const { id, value } = event.target;
-    setNuevaSolicitud({
-      ...nuevaSolicitud,
+    setnewRequest({
+      ...newRequest,
       [id]: value,
     });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (nuevaSolicitud.tipo_organizacion === "_") {
+    if (newRequest.tipo_organizacion === "_") {
       alert("Por favor, selecciona un tipo de organización válido.");
       return; // No se permite continuar
     }
@@ -47,7 +47,7 @@ export const Solicitud = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(nuevaSolicitud),
+      body: JSON.stringify(newRequest),
     })
       .then((response) => {
         if (!response.ok) {
@@ -74,14 +74,14 @@ export const Solicitud = () => {
             <input
               type="text"
               id="nombre"
-              value={nuevaSolicitud.nombre}
+              value={newRequest.nombre}
               onChange={handleInputChange}
             />
 
             <label htmlFor="descripcion">Descripción</label>
             <textarea
               id="descripcion"
-              value={nuevaSolicitud.descripcion}
+              value={newRequest.descripcion}
               onChange={handleInputChange}
               cols="30"
               rows="10"
@@ -108,7 +108,7 @@ export const Solicitud = () => {
                   type="text"
                   id="tipo_organizacion"
                   placeholder="Especifica otro tipo"
-                  value={nuevaSolicitud.tipo_organizacion}
+                  value={newRequest.tipo_organizacion}
                   onChange={handleInputChange}
                   required
                 />
@@ -119,7 +119,7 @@ export const Solicitud = () => {
             <input
               type="text"
               id="direccion"
-              value={nuevaSolicitud.direccion}
+              value={newRequest.direccion}
               onChange={handleInputChange}
             />
 
@@ -127,7 +127,7 @@ export const Solicitud = () => {
             <input
               type="text"
               id="departamento"
-              value={nuevaSolicitud.departamento}
+              value={newRequest.departamento}
               onChange={handleInputChange}
             />
 
@@ -135,7 +135,7 @@ export const Solicitud = () => {
             <input
               type="text"
               id="ciudad"
-              value={nuevaSolicitud.ciudad}
+              value={newRequest.ciudad}
               onChange={handleInputChange}
             />
 
@@ -143,7 +143,7 @@ export const Solicitud = () => {
             <input
               type="tel"
               id="telefono"
-              value={nuevaSolicitud.telefono}
+              value={newRequest.telefono}
               onChange={handleInputChange}
             />
 
@@ -151,7 +151,7 @@ export const Solicitud = () => {
             <input
               type="email"
               id="email"
-              value={nuevaSolicitud.email}
+              value={newRequest.email}
               onChange={handleInputChange}
             />
 
@@ -159,7 +159,7 @@ export const Solicitud = () => {
             <input
               type="url"
               id="web"
-              value={nuevaSolicitud.web}
+              value={newRequest.web}
               onChange={handleInputChange}
             />
 
@@ -167,7 +167,7 @@ export const Solicitud = () => {
             <input
               type="text"
               id="nombre_contacto"
-              value={nuevaSolicitud.nombre_contacto}
+              value={newRequest.nombre_contacto}
               onChange={handleInputChange}
             />
 
@@ -175,7 +175,7 @@ export const Solicitud = () => {
             <input
               type="email"
               id="email_contacto"
-              value={nuevaSolicitud.email_contacto}
+              value={newRequest.email_contacto}
               onChange={handleInputChange}
             />
 

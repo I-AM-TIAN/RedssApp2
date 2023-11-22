@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export const NavBar = () => {
   return (
     <div className="nav">
-      <Link to="/Home">
+      <Link to="/">
         <img
           className="logo"
           src="../../public/images/Logo_RedssApp.png"
