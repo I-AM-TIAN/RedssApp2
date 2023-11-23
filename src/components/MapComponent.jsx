@@ -16,7 +16,7 @@ const MapboxComponent = () => {
       container: "map",
       style: "mapbox://styles/mapbox/streets-v12",
       center: [0, 0], // Coordenadas del centro del mapa
-      zoom: 1, // Nivel de zoom inicial
+      zoom: 2, // Nivel de zoom inicial
     });
 
     // Hacer una solicitud a la API para obtener los datos de las empresas
