@@ -29,7 +29,7 @@ export const NavBar = () => {
         </ul>
         <ul>
           <a href="">
-            <Link to="/Solicitud">
+            <Link to="/Request">
               <img src="../../public/images/icons/form.png" alt="" />
             </Link>
           </a>
