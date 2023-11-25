@@ -75,6 +75,36 @@ app.post('/solicitudes', (req, res) => {
       }
     });
   });
+
+  
+  app.get('/solicitudes/:estado', (req, res) => {
+    const { estado } = req.params;
+    const sql = 'SELECT * FROM solicitudes WHERE estado = ?';
+    connection.query(sql, [estado], (error, results) => {
+        if (error) {
+            res.status(500).json({ error: 'Error en la consulta de la base de datos' });
+            return;
+        }
+
+        res.json(results);
+    });
+});
+
+// Endpoint para actualizar el estado de una solicitud por su ID
+app.put('/solicitudes/:id/estado', (req, res) => {
+    const { id } = req.params;
+    const { nuevoEstado } = req.body; // Asegúrate de enviar el nuevo estado desde el frontend
+
+    const sql = 'UPDATE solicitudes SET estado = ? WHERE id_solicitud = ?';
+    connection.query(sql, [nuevoEstado, id], (error, results) => {
+        if (error) {
+            res.status(500).json({ error: 'Error al actualizar el estado de la solicitud' });
+            return;
+        }
+
+        res.json({ message: 'Estado de la solicitud actualizado con éxito' });
+    });
+});
 // Puerto en el que el servidor escuchará las solicitudes
 const PORT = 3000;
 app.listen(PORT, () => {

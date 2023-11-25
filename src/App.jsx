@@ -3,6 +3,7 @@ import { Home } from "./screens/Home";
 import { Info } from "./screens/Info";
 import { Request } from "./screens/Request";
 import { Link } from "react-router-dom";
+import { Admin } from "./screens/Admin";
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/info" element={<Info />} />
-          <Route path="/Request" element={<Request />} />
+          <Route path="/Solicitud" element={<Request />} />
+          <Route path="/Admin" element={<Admin />} />
         </Routes>
       </Router>
     </>

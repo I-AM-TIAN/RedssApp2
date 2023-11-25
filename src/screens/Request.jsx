@@ -15,6 +15,7 @@ export const Request = () => {
     web: "",
     nombre_contacto: "",
     email_contacto: "",
+    estado:"pendiente"
   });
 
   const handleTipoOrgChange = (event) => {
