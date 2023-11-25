@@ -2,10 +2,10 @@
     height: 100%;
     width: 100%;
 }
-.content-mapu{
+.contentmap1{
     display: flex;
     justify-content: center;
-    border: 2px solid;
+    margin: 20px 100px;
     width: 400px;
     height: 400px;
 

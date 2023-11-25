@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 import { Info } from "../screens/Info";
 import { Link, Routes } from "react-router-dom";
+import "mapbox-gl/dist/mapbox-gl.css";
+
 import { useNavigate } from "react-router-dom";
 import "../styles/mapcomponent.css";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
@@ -9,6 +11,21 @@ import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 
 const MapboxComponent = () => {
   const navigate = useNavigate();
+
+  // Función para añadir etiquetas al mapa
+  const addLabelsToMap = (map, data) => {
+    // Iterar sobre los datos de las empresas y añadir etiquetas al mapa
+    data.forEach((empresa) => {
+      const label = document.createElement("div");
+      label.className = "map-label";
+      label.innerHTML = empresa.nombre;
+
+      // Crear una etiqueta en las coordenadas de la empresa
+      new mapboxgl.Marker(label)
+        .setLngLat([empresa.longitud, empresa.latitud])
+        .addTo(map);
+    });
+  };
   useEffect(() => {
     mapboxgl.accessToken =
       "pk.eyJ1IjoidGlhbjI4MTIiLCJhIjoiY2xubmphcXVzMDU2MzJrcDFvNnA0M3ltZSJ9.JDqoOEv8oFeVJF0sHLZ7Hw"; // Reemplaza con tu token de Mapbox
@@ -16,7 +33,7 @@ const MapboxComponent = () => {
       container: "map",
       style: "mapbox://styles/mapbox/streets-v12",
       center: [0, 0], // Coordenadas del centro del mapa
-      zoom: 1, // Nivel de zoom inicial
+      zoom: 2, // Nivel de zoom inicial
     });
 
     // Hacer una solicitud a la API para obtener los datos de las empresas
