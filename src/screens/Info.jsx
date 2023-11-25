@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { NavBar } from "../components/NavBar";
+import MapboxComponent from "../components/Map";
 // import { Map } from "../components/Map";
 export const Info = () => {
   const location = useLocation();
@@ -33,6 +34,7 @@ export const Info = () => {
               <h2>{empresa.nombre}</h2>
               <p>Dirección: {empresa.direccion}</p>
               {/* Otras propiedades de la empresa */}
+              <MapboxComponent latitude={empresa.latitud} longitude={empresa.longitud} locationName={empresa.nombre} />
             </div>
           </div>
         ) : (

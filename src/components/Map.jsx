@@ -1,23 +1,61 @@
-import { useEffect } from "react";
-import mapboxgl from "mapbox-gl";
-import "../styles/map.css";
+  import { useEffect, useRef } from "react";
+  import mapboxgl from "mapbox-gl";
 
-const Map = (lng, lat) => {
-  useEffect(() => {
-    mapboxgl.accessToken =
-      "pk.eyJ1IjoidGlhbjI4MTIiLCJhIjoiY2xubmphcXVzMDU2MzJrcDFvNnA0M3ltZSJ9.JDqoOEv8oFeVJF0sHLZ7Hw"; // Reemplaza con tu token de Mapbox
-    new mapboxgl.Map({
-      container: "mapu",
-      style: "mapbox://styles/mapbox/streets-v12",
-      center: [lng, lat], // Coordenadas del centro del mapa
-      zoom: 1, // Nivel de zoom inicial
-    });
-  }, [lng, lat]);
-  return (
-    <div className="content-mapu">
-      <div id="mapu"></div>
-    </div>
-  );
-};
+  const MapboxComponent = ({ latitude, longitude, locationName }) => {
+    const mapContainer = useRef(null);
 
-export default Map;
+    useEffect(() => {
+      mapboxgl.accessToken =
+      "pk.eyJ1IjoidGlhbjI4MTIiLCJhIjoiY2xubmphcXVzMDU2MzJrcDFvNnA0M3ltZSJ9.JDqoOEv8oFeVJF0sHLZ7Hw";
+      const map = new mapboxgl.Map({
+        container: mapContainer.current,
+        style: "mapbox://styles/mapbox/streets-v12",
+        center: [longitude, latitude],
+        zoom: 15,
+      });
+
+      const marker = new mapboxgl.Marker()
+        .setLngLat([longitude, latitude])
+        .addTo(map);
+
+      map.on("load", () => {
+        map.addLayer({
+          id: "location-name",
+          type: "symbol",
+          source: {
+            type: "geojson",
+            data: {
+              type: "Feature",
+              geometry: {
+                type: "Point",
+                coordinates: [longitude, latitude],
+              },
+              properties: {
+                title: locationName,
+              },
+            },
+          },
+          layout: {
+            "text-field": ["get", "title"],
+            "text-font": ["Open Sans Regular"],
+            "text-size": 12,
+            "text-anchor": "top",
+          },
+          paint: {
+            "text-color": "#000000",
+          },
+        });
+      });
+
+      map.scrollZoom.disable();
+      
+    }, [latitude, longitude, locationName]);
+
+    return (
+      <div className="contentmap">
+        <div ref={mapContainer} style={{ width: "100%", height: "400px" }}></div>
+      </div>
+    );
+  };
+
+  export default MapboxComponent;

@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 import { Info } from "../screens/Info";
 import { Link, Routes } from "react-router-dom";
+import "mapbox-gl/dist/mapbox-gl.css";
+
 import { useNavigate } from "react-router-dom";
 import "../styles/mapcomponent.css";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
@@ -190,6 +192,7 @@ const MapboxComponent = () => {
 
     map.addControl(new mapboxgl.NavigationControl());
     map.scrollZoom.disable();
+    
   }, []);
 
   return (
