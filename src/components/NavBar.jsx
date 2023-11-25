@@ -13,26 +13,20 @@ export const NavBar = () => {
 
       <li>
         <ul>
-          <a href="">
             <Link to="/">
               <img src="../../public/images/icons/home-page.png" alt="" />
             </Link>
-          </a>
         </ul>
         <ul>
-          <a href="">
             <img
               src="../../public/images/icons/information-button.png"
               alt=""
             />
-          </a>
         </ul>
         <ul>
-          <a href="">
             <Link to="/Request">
               <img src="../../public/images/icons/form.png" alt="" />
             </Link>
-          </a>
         </ul>
         <ul>
           <Link to='/Admin'>Admin</Link>

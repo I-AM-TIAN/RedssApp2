@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "../styles/request.css";
 import { NavBar } from "../components/NavBar";
+import { useNavigate } from "react-router-dom";
 export const Request = () => {
+  const navigate = useNavigate();
   const [showInput, setShowInput] = useState(false);
   const [newRequest, setnewRequest] = useState({
     nombre: "",
@@ -15,7 +17,7 @@ export const Request = () => {
     web: "",
     nombre_contacto: "",
     email_contacto: "",
-    estado:"pendiente"
+    estado: "pendiente"
   });
 
   const handleTipoOrgChange = (event) => {
@@ -63,12 +65,14 @@ export const Request = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
+    alert('Solicitud guardada con exito');
+    navigate("/");
   };
 
   return (
     <>
       <NavBar />
-      <body className="bodySolicitud">
+      <div className="bodySolicitud">
         <div className="formulario">
           <form onSubmit={handleSubmit}>
             <label htmlFor="nombre">Nombre</label>
@@ -183,7 +187,7 @@ export const Request = () => {
             <button type="submit">Mandar solicitud</button>
           </form>
         </div>
-      </body>
+      </div>
     </>
   );
 };
