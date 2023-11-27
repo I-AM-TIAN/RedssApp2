@@ -44,7 +44,6 @@ export const Request = () => {
       return; // No se permite continuar
     }
 
-    // Realizar la solicitud POST al servidor para guardar la nueva solicitud
     fetch("http://localhost:3000/solicitudes", {
       method: "POST",
       headers: {
@@ -60,7 +59,6 @@ export const Request = () => {
       })
       .then((data) => {
         console.log("Solicitud guardada con éxito:", data);
-        // Puedes hacer más aquí, como redirigir al usuario a otra página o mostrar un mensaje de éxito.
       })
       .catch((error) => {
         console.error("Error:", error);

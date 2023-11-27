@@ -4,6 +4,7 @@ import { Info } from "./screens/Info";
 import { Request } from "./screens/Request";
 import { Link } from "react-router-dom";
 import { Admin } from "./screens/Admin";
+import { Login } from "./screens/Login";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/info" element={<Info />} />
           <Route path="/Request" element={<Request />} />
           <Route path="/Admin" element={<Admin />} />
+          <Route path="/Login" element={<Login />} />
         </Routes>
       </Router>
     </>

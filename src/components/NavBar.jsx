@@ -28,9 +28,6 @@ export const NavBar = () => {
               <img src="../../public/images/icons/form.png" alt="" />
             </Link>
         </ul>
-        <ul>
-          <Link to='/Admin'>Admin</Link>
-        </ul>
       </li>
     </div>
   );

@@ -76,6 +76,24 @@ app.post('/solicitudes', (req, res) => {
     });
   });
 
+  app.post('/organizacion', (req, res) => {
+    const nuevaOrganizacion = req.body;
+  
+
+    const sql = 'INSERT INTO organizacion SET ?'; 
+  
+    connection.query(sql, nuevaOrganizacion, (error, results) => {
+      if (error) {
+        console.error('Error al guardar la organizacion: ' + error.message);
+        res.status(500).json({ error: 'Error al guardar la organizacion' });
+      } else {
+        console.log('Organización guardada con éxito. ID:', results.insertId);
+        res.json({ message: 'Organización guardada con éxito', id: results.insertId });
+      }
+    });
+  });
+
+
   
   app.get('/solicitudes/:estado', (req, res) => {
     const { estado } = req.params;

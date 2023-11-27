@@ -42,4 +42,89 @@
     background-color: #f44336;
     color: white;
   }
-  
+/* Estilos para el modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscurecido */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+}
+
+/* Estilos para los títulos y detalles */
+.organization-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.detail-info {
+  margin-bottom: 15px;
+}
+
+/* Estilos para las entradas de coordenadas */
+.coords-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.coord-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100px;
+}
+
+/* Estilos para los botones de acción */
+.actions-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.aprobar-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.aprobar-button:hover {
+  background-color: #45a049;
+}
+
+.rechazar-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.rechazar-button:hover {
+  background-color: #d32f2f;
+}
