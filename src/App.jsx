@@ -3,7 +3,7 @@ import { Home } from "./screens/Home";
 import { Info } from "./screens/Info";
 import { Request } from "./screens/Request";
 import { Link } from "react-router-dom";
-import { Admin } from "./screens/Admin";
+import { Admin } from "./Admin/screens/Admin";
 import { Login } from "./screens/Login";
 
 function App() {
