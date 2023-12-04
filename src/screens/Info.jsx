@@ -49,7 +49,7 @@ export const Info = () => {
             </div>
             <div className="sec2">
               <div className="desc">
-                <p>
+                {/* <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Magnam distinctio error aliquam voluptates ullam numquam ab
                   minus enim perspiciatis a perferendis aliquid ducimus nihil
@@ -70,8 +70,8 @@ export const Info = () => {
                   perferendis recusandae deleniti placeat quidem maxime debitis
                   assumenda dignissimos nesciunt facere omnis explicabo quod
                   nisi. Cum, perspiciatis.
-                </p>
-                {/* <p>{empresa.descripcion}</p> */}
+                </p> */}
+                <p>{empresa.descripcion}</p>
               </div>
               <div className="links">
                 <div className="icon">
